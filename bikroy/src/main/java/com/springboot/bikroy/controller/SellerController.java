@@ -1,6 +1,7 @@
 package com.springboot.bikroy.controller;
 
 import com.springboot.bikroy.dto.AdvertisementDto;
+import com.springboot.bikroy.dto.BuyingRequestDto;
 import com.springboot.bikroy.service.seller.SellerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/seller")
@@ -53,6 +55,21 @@ public class SellerController {
             return ResponseEntity.status(HttpStatus.OK).build();
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @GetMapping("/{sellerId}")
+    public ResponseEntity<List<BuyingRequestDto>> getAllProducts(@PathVariable Long sellerId){
+        return ResponseEntity.ok(sellerService.getAllProduct(sellerId));
+    }
+
+    @GetMapping("/{sellingId}/{status}")
+    public ResponseEntity<?> changeStatus(@PathVariable Long sellingId, @PathVariable String status){
+        boolean success = sellerService.updateSellingStatus(sellingId, status);
+        if(success){
+            return ResponseEntity.ok().build();
+        }else{
+            return ResponseEntity.notFound().build();
         }
     }
 }

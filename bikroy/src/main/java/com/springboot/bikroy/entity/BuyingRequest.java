@@ -21,8 +21,6 @@ public class BuyingRequest {
 
     private RequestReview requestReview;
 
-    private Date buyingDate;
-
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -44,7 +42,6 @@ public class BuyingRequest {
         buyingRequestDto.setId(id);
         buyingRequestDto.setRequestStatus(requestStatus);
         buyingRequestDto.setReview(requestReview);
-        buyingRequestDto.setBuyingdate(buyingDate);
         buyingRequestDto.setAdId(ad.getId());
         buyingRequestDto.setUserId(seller.getId());
         buyingRequestDto.setProductName(ad.getProductName());
