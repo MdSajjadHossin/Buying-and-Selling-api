@@ -36,4 +36,23 @@ public class SellerController {
         return ResponseEntity.ok(sellerService.getAdById(adId));
     }
 
+    @PutMapping("/ad/{adId}")
+    public ResponseEntity<?> updateAd(@PathVariable Long adId, @ModelAttribute AdvertisementDto advertisementDto) throws IOException {
+        boolean adExist = sellerService.updateAd(adId, advertisementDto);
+        if(adExist) {
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }else {
+
+        }return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @DeleteMapping("/ad/{adId}")
+    public ResponseEntity<?> deleteAd(@PathVariable Long adId){
+        boolean adExist = sellerService.deleteAd(adId);
+        if(adExist){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }

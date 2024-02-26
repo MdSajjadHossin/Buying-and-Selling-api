@@ -50,4 +50,30 @@ public class SellerServiceImpl implements SellerService{
         return null;
     }
 
+    public boolean updateAd(Long adId, AdvertisementDto advertisementDto) throws IOException {
+        Optional<Advertisement> optionalAd = advertisementRepo.findById(adId);
+        if(optionalAd.isPresent()){
+            Advertisement ad = optionalAd.get();
+
+            ad.setProductName(advertisementDto.getProductName());
+            ad.setDescription(advertisementDto.getDescription());
+            ad.setPrice(advertisementDto.getPrice());
+
+            if(advertisementDto.getImg() != null){
+                ad.setImg(advertisementDto.getImg().getBytes());
+            }
+            advertisementRepo.save(ad);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deleteAd(Long adId){
+        Optional<Advertisement> optionalAd = advertisementRepo.findById(adId);
+        if(optionalAd.isPresent()){
+            advertisementRepo.delete(optionalAd.get());
+            return true;
+        }
+        return false;
+    }
 }

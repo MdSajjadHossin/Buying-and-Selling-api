@@ -23,7 +23,7 @@ public class AuthServiceImpl implements AuthService{
         user.setEmail(signupRequestDto.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(signupRequestDto.getPassword()));
         user.setPhone(signupRequestDto.getPhone());
-        user.setRole(Role.CLIENT);
+        user.setRole(Role.BUYER);
 
 
 

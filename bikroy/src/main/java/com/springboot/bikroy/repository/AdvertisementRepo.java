@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface AdvertisementRepo extends JpaRepository<Advertisement, Long> {
     List<Advertisement> findAllByUserId(Long userId);
+
+    List<Advertisement> findAllByProductNameContaining(String productName);
 }

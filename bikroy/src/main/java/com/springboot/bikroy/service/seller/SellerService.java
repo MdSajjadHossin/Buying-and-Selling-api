@@ -10,4 +10,6 @@ public interface SellerService {
     boolean postAd(Long userId, AdvertisementDto advertisementDto) throws IOException;
     List<AdvertisementDto> getAllAds(Long userId);
     public AdvertisementDto getAdById(Long adId);
+    boolean updateAd(Long adId, AdvertisementDto advertisementDto) throws IOException;
+    boolean deleteAd(Long adId);
 }
