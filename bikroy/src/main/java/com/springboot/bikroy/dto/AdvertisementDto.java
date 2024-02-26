@@ -1,10 +1,5 @@
 package com.springboot.bikroy.dto;
-
-import com.springboot.bikroy.entity.User;
-import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data

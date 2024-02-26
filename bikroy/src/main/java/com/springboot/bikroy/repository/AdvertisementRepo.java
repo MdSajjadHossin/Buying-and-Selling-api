@@ -1,8 +1,12 @@
 package com.springboot.bikroy.repository;
 
+import com.springboot.bikroy.dto.AdvertisementDto;
 import com.springboot.bikroy.entity.Advertisement;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdvertisementRepo extends JpaRepository<Advertisement, Long> {
+import java.util.Collection;
+import java.util.List;
 
+public interface AdvertisementRepo extends JpaRepository<Advertisement, Long> {
+    List<Advertisement> findAllByUserId(Long userId);
 }

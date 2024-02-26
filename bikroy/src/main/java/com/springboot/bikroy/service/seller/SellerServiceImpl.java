@@ -9,7 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -36,5 +38,16 @@ public class SellerServiceImpl implements SellerService{
         return false;
     }
 
+    public List<AdvertisementDto> getAllAds(Long userId){
+        return advertisementRepo.findAllByUserId(userId).stream().map(Advertisement::getAdvertisementDto).collect(Collectors.toList());
+    }
+
+    public AdvertisementDto getAdById(Long adId){
+        Optional<Advertisement> optionalAd = advertisementRepo.findById(adId);
+        if(optionalAd.isPresent()){
+            return optionalAd.get().getAdvertisementDto();
+        }
+        return null;
+    }
 
 }

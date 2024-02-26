@@ -24,7 +24,7 @@ public class Advertisement {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
-    public AdvertisementDto advertisementDto(){
+    public AdvertisementDto getAdvertisementDto(){
         AdvertisementDto advertisementDto = new AdvertisementDto();
         advertisementDto.setId(id);
         advertisementDto.setProductName(productName);
@@ -35,7 +35,5 @@ public class Advertisement {
 
         return advertisementDto;
     }
-
-
 
 }

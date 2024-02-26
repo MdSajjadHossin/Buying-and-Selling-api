@@ -25,4 +25,15 @@ public class SellerController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/ads/{userId}")
+    public ResponseEntity<?> getAllAdsByUserId(@PathVariable Long userId){
+        return ResponseEntity.ok(sellerService.getAllAds(userId));
+    }
+
+    @GetMapping("/ads/{adId}")
+    public ResponseEntity<?> getAdByAdId(@PathVariable Long adId){
+        return ResponseEntity.ok(sellerService.getAdById(adId));
+    }
+
 }
