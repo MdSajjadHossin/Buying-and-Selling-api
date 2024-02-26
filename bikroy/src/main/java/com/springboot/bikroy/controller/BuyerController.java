@@ -1,6 +1,7 @@
 package com.springboot.bikroy.controller;
 
 import com.springboot.bikroy.dto.BuyingRequestDto;
+import com.springboot.bikroy.dto.ReviewDto;
 import com.springboot.bikroy.service.buyer.BuyerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -42,6 +43,16 @@ public class BuyerController {
     @GetMapping("/{userId}")
     public ResponseEntity<?> getSellingByUserId(@PathVariable Long userId){
         return ResponseEntity.ok(buyerService.getAllSellingProductByUserId(userId));
+    }
+
+    @PostMapping("/review")
+    public ResponseEntity<?> giveReview(@RequestBody ReviewDto reviewDto){
+        boolean success = buyerService.review(reviewDto);
+        if(success){
+            return ResponseEntity.status(HttpStatus.OK).build();
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
 }
