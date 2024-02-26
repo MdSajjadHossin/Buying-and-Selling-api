@@ -18,8 +18,7 @@ public class AuthServiceImpl implements AuthService{
     public UserDto signupClint(SignupRequestDto signupRequestDto){
         User user = new User();
 
-        user.setFirstName(signupRequestDto.getFirstName());
-        user.setLastName(signupRequestDto.getLastName());
+        user.setName(signupRequestDto.getName());
         user.setEmail(signupRequestDto.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(signupRequestDto.getPassword()));
         user.setPhone(signupRequestDto.getPhone());
@@ -37,8 +36,7 @@ public class AuthServiceImpl implements AuthService{
     public UserDto signupSeller(SignupRequestDto signupRequestDto){
         User user = new User();
 
-        user.setFirstName(signupRequestDto.getFirstName());
-        user.setLastName(signupRequestDto.getLastName());
+        user.setName(signupRequestDto.getName());
         user.setEmail(signupRequestDto.getEmail());
         user.setPassword(new BCryptPasswordEncoder().encode(signupRequestDto.getPassword()));
         user.setPhone(signupRequestDto.getPhone());

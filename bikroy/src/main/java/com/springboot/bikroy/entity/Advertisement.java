@@ -31,7 +31,7 @@ public class Advertisement {
         advertisementDto.setDescription(description);
         advertisementDto.setReturnedImg(img);
         advertisementDto.setPrice(price);
-        advertisementDto.setSellerName(user.getFirstName() + user.getLastName());
+        advertisementDto.setSellerName(user.getName());
 
         return advertisementDto;
     }

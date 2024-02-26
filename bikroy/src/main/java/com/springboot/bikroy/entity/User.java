@@ -14,8 +14,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
+    private String name;
     private String email;
     private String password;
     private String phone;
@@ -24,8 +23,7 @@ public class User {
     public UserDto getDto(){
         UserDto userDto = new UserDto();
         userDto.setId(id);
-        userDto.setFirstName(firstName);
-        userDto.setLastName(lastName);
+        userDto.setName(name);
         userDto.setEmail(email);
         userDto.setRole(role);
 
